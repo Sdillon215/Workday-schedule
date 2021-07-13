@@ -33,10 +33,10 @@ $(".event-row").on("click", "p", function () {
 //   });
 
 $(".event-row button").click(function () {
-    var text = $(this)
+    var text = $(textInput)
       .val()
       .trim();
-      console.log(text);
+      console.log(textInput);
 
     // recreate p element
     var taskp = $("<p>")
@@ -44,6 +44,6 @@ $(".event-row button").click(function () {
       .text(text);
 
     // replace textarea with p
-    $(this).replaceWith(taskp);
+    $(textInput).replaceWith(taskp);
     console.log("save button clicked");
 });
