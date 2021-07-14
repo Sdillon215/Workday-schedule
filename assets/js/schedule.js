@@ -20,7 +20,6 @@ $(".event-row").on("click", "p", function () {
 //     var text = $(this)
 //       .val()
 //       .trim();
-//       console.log(text);
 
 //     // recreate p element
 //     var taskp = $("<p>")
@@ -33,17 +32,21 @@ $(".event-row").on("click", "p", function () {
 //   });
 
 $(".event-row button").click(function () {
-    var text = $(textInput)
-      .val()
-      .trim();
-      console.log(textInput);
+    var txtArea = $(this)
+    .closest(".event-row")
+    .children(".list-group")
+    .children("textarea")
+    .val()
+    .trim();
+    console.log(this);
+    
+      console.log(txtArea);
 
     // recreate p element
     var taskp = $("<p>")
       .addClass("form-control my-auto")
-      .text(text);
+      .text(txtArea);
 
     // replace textarea with p
-    $(textInput).replaceWith(taskp);
-    console.log("save button clicked");
+    $("textarea").replaceWith(taskp);
 });
