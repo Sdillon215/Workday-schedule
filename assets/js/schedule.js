@@ -14,22 +14,6 @@ $(".event-row").on("click", "p", function () {
     textInput.trigger("focus");
 });
 
-//   when user clicks outside the textarea turns <textarea> back to <p> with added text
-//   $(".event-row").on("blur", "textarea", function () {
-//     // get the textareas current value/text
-//     var text = $(this)
-//       .val()
-//       .trim();
-
-//     // recreate p element
-//     var taskp = $("<p>")
-//       .addClass("form-control my-auto")
-//       .text(text);
-
-//     // replace textarea with p
-//     $(this).replaceWith(taskp);
-//     console.log(this);
-//   });
 
 $(".event-row button").click(function () {
     var txtArea = $(this)
