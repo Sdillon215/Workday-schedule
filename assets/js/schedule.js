@@ -1,4 +1,4 @@
-var tasks = {};
+var tasksArr = {};
 // display date in header
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
 
@@ -22,15 +22,38 @@ $(".event-row button").click(function () {
     .children("textarea")
     .val()
     .trim();
-    console.log(this);
+
+    // get parents id
+    var status = $(".new-event")
+    .closest(".list-group")
+    .attr("id");
     
-      console.log(txtArea);
-
     // recreate p element
-    var taskp = $("<p>")
-      .addClass("form-control my-auto")
-      .text(txtArea);
-
+    var taskp = $("<p id=" + status + ">")
+    .addClass("form-control my-auto")
+    .text(txtArea);
+    
+    
+    console.log(status);
+    
     // replace textarea with p
     $("textarea").replaceWith(taskp);
-});
+    console.log(taskp);
+  });
+
+  var saveLocal = function () {
+
+  }
+  
+  
+  
+  
+  
+  
+  // var auditEvent = function() {
+    //   var newEvent = $(".new-event");
+    //   newEvent.addClass("bg-danger");
+    // };
+    
+    
+    // auditEvent();
