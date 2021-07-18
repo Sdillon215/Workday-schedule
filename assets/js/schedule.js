@@ -1,11 +1,12 @@
-// display date in header
+var eventText = $(".event-text")
 var NowMoment = moment();
+// display date in header
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
 
 
 // create function to set and get items from localStorage
 var storage = function (txtClass, btnId, keyValue) {
-  $(btnId).on("click", function() {
+  $(btnId).on("click", function () {
     var newEvent = $(txtClass).val();
     console.log(newEvent);
     localStorage.setItem(keyValue, newEvent);
@@ -25,18 +26,28 @@ storage(".text7", "#btn7", "keyValue7");
 storage(".text8", "#btn8", "keyValue8");
 storage(".text9", "#btn9", "keyValua9");
 
-var eventText = $(".event-text")
 
+var auditTask = function () {
+  for (var i = 0; i < eventText.length; i++) {
 
-for (var i = 0; i < eventText.length; i++) {
-  var eventTextArea = $(eventText[i]);
-  let eventHour = parseInt(eventText.attr("id"));
-  console.log(eventHour);
-  let currentHour = NowMoment.format("H");
-  console.log(currentHour);
-  if (currentHour > eventHour) {
-    eventTextArea.addClass("past");
-  } else if (currentHour == eventHour) {
-    eventTextArea.addClass("present");
+    var eventTextArea = $(eventText[i]);
+    var eventHour = parseInt(eventTextArea.attr("id"));
+    var currentHour = NowMoment.format("H");
+
+    if (currentHour > eventHour) {
+      eventTextArea.addClass("past");
+    } else if (currentHour == eventHour) {
+      eventTextArea.addClass("present");
+    };
+    if (currentHour < eventHour) {
+      eventTextArea.addClass("future");
+    };
   };
 };
+
+setInterval(function () {
+  auditTask();
+}, (1000 * 60) * 30);
+
+auditTask();
+
