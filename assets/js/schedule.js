@@ -8,8 +8,10 @@ var storage = function (txtId, btnId, keyValue) {
     var newEvent = $(txtId).val();
     console.log(newEvent);
     localStorage.setItem(keyValue, newEvent);
-  })
-}
+  });
+  var savedEvent = localStorage.getItem(keyValue);
+  console.log(savedEvent);
+};
 
 // passes parameters for each row to the storage function
 storage("#9", "#btn1", "keyvalue1");
