@@ -1,4 +1,4 @@
-var tasksArr = [];
+var tasksArr = {};
 // display date in header
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
 
@@ -32,37 +32,48 @@ $(".event-row button").click(function () {
   var taskp = $("<p id=" + status + ">")
     .addClass("form-control my-auto")
     .text(txtArea);
-    
-    var taskId = taskp.attr("id");
-    var taskText = taskp.text();
-    console.log(taskId);
-    console.log(taskText);
 
-    tasksArr.push({
-      id: taskId,
-      text: taskText
-    });
+  var taskId = taskp.attr("id");
+  var taskText = taskp.text();
+  console.log(taskId);
+  console.log(taskText);
 
-    saveLocal();
-console.log(tasksArr);
+  tasksArr.event.push({
+    id: taskId,
+    text: taskText
+  });
+
+  saveLocal();
+  loadTasks();
   // replace textarea with p
   $("textarea").replaceWith(taskp);
 });
-console.log(tasksArr);
 
 var saveLocal = function () {
   localStorage.setItem("tasksArr", JSON.stringify(tasksArr));
 };
 
+// var loadTasks = function() {
+//   tasksArr = JSON.parse(localStorage.getItem(tasksArr));
+//   if (!tasksArr) {
+//     tasksArr = {
+//       event: []
+//     };
+//   }
+//   console.log(tasksArr);
+// };
 
 
 
+// loadTasks();
+var date = moment();
+
+var auditEvent = function () {
+  var currentTime = parseInt(date.format("H"));
+  
+  console.log(currentTime);
+};
 
 
-  // var auditEvent = function() {
-    //   var newEvent = $(".new-event");
-    //   newEvent.addClass("bg-danger");
-    // };
 
-
-    // auditEvent();
+auditEvent();
