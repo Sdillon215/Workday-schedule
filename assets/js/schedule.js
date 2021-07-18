@@ -1,4 +1,6 @@
-var tasksArr = {};
+var tasksArr = {
+  event:[]
+};
 // display date in header
 $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
 
@@ -53,27 +55,28 @@ var saveLocal = function () {
   localStorage.setItem("tasksArr", JSON.stringify(tasksArr));
 };
 
-// var loadTasks = function() {
-//   tasksArr = JSON.parse(localStorage.getItem(tasksArr));
-//   if (!tasksArr) {
-//     tasksArr = {
-//       event: []
-//     };
-//   }
-//   console.log(tasksArr);
-// };
-
-
-
-// loadTasks();
-var date = moment();
-
-var auditEvent = function () {
-  var currentTime = parseInt(date.format("H"));
-  
-  console.log(currentTime);
+var loadTasks = function() {
+  // tasksArr = JSON.parse(localStorage.getItem(tasksArr));
+  // if (!tasksArr) {
+  //   tasksArr = {
+  //     event: []
+  //   };
+  // }
+  console.log(tasksArr);
 };
 
 
 
-auditEvent();
+loadTasks();
+
+var date = moment();
+
+// var auditEvent = function (taskId) {
+//   var currentTime = parseInt(date.format("H"));
+//   console.log(taskId);
+//   console.log(currentTime);
+// };
+
+
+
+// auditEvent();
